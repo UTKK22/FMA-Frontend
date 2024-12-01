@@ -1,0 +1,97 @@
+.pbanners {
+  /* margin-top: 30px;
+  display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  margin-top: 30px;
+  gap: 30px;
+  row-gap: 50px;
+}
+.pbannerone {
+  background: url("https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732192340/sjrydf7pyrsaplhzy04l.png")
+    no-repeat;
+  background-size: cover;
+}
+.pbannertwo {
+  background: url("https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732192340/ckd4ek3ydegraim1yppz.png")
+    no-repeat;
+  background-size: cover;
+}
+.pbannerthree {
+  background: url("https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732192340/yeq3rnyottmwy4vuinrz.png")
+    no-repeat;
+  background-size: cover;
+}
+.pbannerone,
+.pbannertwo,
+.pbannerthree {
+  width: 25vw;
+  height: 32vh;
+  position: relative;
+  border-radius: 12px;
+}
+.pline1 {
+  position: absolute;
+  bottom: 45px;
+  left: 25px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(252, 138, 6, 1);
+}
+.pline2 {
+  position: absolute;
+  bottom: 10px;
+  left: 25px;
+  font-family: Poppins;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+}
+.pline3 {
+  background-color: rgba(3, 8, 31, 1);
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  height: 45px;
+  width: 60px;
+  position: absolute;
+  right: 12px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pline4 {
+  background-color: rgba(255, 255, 255, 1);
+  border-top-left-radius: 45px;
+  border-bottom-right-radius: 12px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  opacity: 0.9;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.pline4 img {
+  height: 40px;
+  width: 40px;
+}

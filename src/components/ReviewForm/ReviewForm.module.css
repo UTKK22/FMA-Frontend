@@ -1,0 +1,72 @@
+.main{
+  display: flex;
+  gap: 20px;
+  margin-bottom: 100px;
+}
+.header p span {
+  color: rgba(0, 0, 0, 1);
+  font-size: 28px;
+  cursor: pointer;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+.mflex {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(3, 8, 31, 1);
+  border-radius: 12px;
+  padding: 16px 16px 16px 16px;
+  gap: 20px;
+  width: fit-content;
+}
+.cartitems {
+  display: flex;
+  width: 46vw;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
+  align-items: center;
+  min-height: fit-content;
+}
+.cartitemimage {
+  width: 60px;
+  border-radius: 6px;
+}
+.bflex {
+  color: rgba(131, 133, 138, 1);
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
+}
+.bflex input {
+  width: 100%;
+  height: 40px;
+  padding: 6px 16px 6px 16px;
+  gap: 4px;
+  border-radius: 100px;
+  border: 1px solid rgba(32, 41, 56, 1);
+  opacity: 0px;
+  margin-top: 4px;
+  color: rgba(131, 133, 138, 1);
+}
+
+.componenttwo{
+  flex:1;
+  margin-top: 66px;
+}

@@ -1,0 +1,185 @@
+.app-download {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #eeeeee 0%, #e0e1dc 100%);
+  position: relative;
+  height: 55vh;
+}
+
+.app-download-content {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* position: relative; */
+  position: absolute;
+  bottom: 0;
+}
+
+.app-download-text {
+  width: 100%; /* Full width for mobile */
+  text-align: center; /* Center align text for mobile */
+  margin-bottom: 20px;
+}
+.app-tt img {
+  height: 50px;
+  width: 175px;
+}
+.app-tt {
+  position: absolute;
+  top: 100px;
+  right: 118px;
+}
+.app-tt span {
+  font-family: Poppins;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 90px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.app-down-tt {
+  position: absolute;
+  border-radius: 120px;
+  background-color: rgba(3, 8, 31, 1);
+  display: flex;
+  justify-content: end;
+  padding-right: 50px;
+  width: 44vw;
+  right: 80px;
+  bottom: 190px;
+  height: 75px;
+  align-items: center;
+}
+.app-down-tt span {
+  font-family: Poppins;
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+}
+.app-down-tt span span {
+  font-family: Poppins;
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(252, 138, 6, 1);
+}
+/* .app-download-text h2 {
+  font-size: 1.25rem; 
+  margin-bottom: 15px;
+} */
+
+.app-download-text p {
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+  position: absolute;
+  bottom: 130px;
+  right: 155px;
+}
+
+.app-download-platforms {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Center platforms for mobile */
+  position: absolute;
+  bottom: 60px;
+  right: 170px;
+}
+
+.app-download-platforms img {
+  width: 120px; /* Adjust for mobile */
+  height: auto;
+  transition: transform 0.5s;
+}
+
+.app-download-platforms img:hover {
+  transform: scale(1.05);
+}
+
+.app-download-image {
+  width: 100%; /* Full width for mobile */
+  text-align: center; /* Center image for mobile */
+}
+
+.app-download-image img {
+  max-width: 100%;
+  height: auto;
+}
+.app-download-image {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  position: relative;
+  z-index: 2;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  left: -14px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .app-download {
+    flex-direction: row; /* Row layout for tablet and up */
+    padding: 40px;
+  }
+
+  .app-download-content {
+    flex-direction: row;
+  }
+
+  .app-download-text {
+    max-width: 50vw;
+    text-align: left; /* Left align text for larger screens */
+  }
+
+  .app-download-image {
+    max-width: 50vw; /* Adjust width for larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-download-text h1 {
+    font-size: 2rem;
+  }
+
+  .app-download-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .app-download-platforms img {
+    width: 150px; /* Adjust for larger screens */
+  }
+}

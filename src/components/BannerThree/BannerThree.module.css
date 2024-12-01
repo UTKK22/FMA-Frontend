@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.header {
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color:rgba(0, 0, 0, 1);
+}
+.banners {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.bannerone img,
+.bannertwo img,
+.bannerthree img,
+.bannerfour img,
+.bannerfive img,
+.bannersix img {
+  height: 19.9vh;
+  width: 12.5vw;
+}
+.bannerone,
+.bannertwo,
+.bannerthree,
+.bannerfour,
+.bannerfive,
+.bannersix {
+  background-color: rgba(245, 245, 245, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+.bannerone div p,
+.bannertwo div p,
+.bannerthree div p,
+.bannerfour div p,
+.bannerfive div p,
+.bannersix div p {
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(3, 8, 31, 1);
+}
+.bannerone div span,
+.bannertwo div span,
+.bannerthree div span,
+.bannerfour div span,
+.bannerfive div span,
+.bannersix div span {
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(252, 138, 6, 1);
+}
+.ps {
+  margin-left: 8px;
+}

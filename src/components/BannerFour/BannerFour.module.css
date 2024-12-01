@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.header p{
+    font-family: Poppins;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(0, 0, 0, 1);
+    margin-bottom: 10px;
+}
+.banners {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  
+}
+.bannerfive,.bannerfour,.bannerone,.bannersix,.bannerthree,.bannertwo{
+    background-color: rgba(252, 138, 6, 1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.bannerfive:hover, .bannerfour:hover, .bannerone:hover, 
+.bannersix:hover, .bannerthree:hover, .bannertwo:hover {
+    background-color: rgba(255, 165, 0, 1); 
+    transform: scale(1.04); 
+}
+.bannerfive:active, .bannerfour:active, .bannerone:active, 
+.bannersix:active, .bannerthree:active, .bannertwo:active {
+    background-color: rgba(240, 120, 0, 1); 
+    transform: scale(0.95); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+}
+.bannerone div img,
+.bannertwo div img,
+.bannerthree div img,
+.bannerfour div img,
+.bannerfive div img,
+.bannersix div img{
+  height: 19.9vh;
+  width: 12.5vw;
+}
+.text{
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+}

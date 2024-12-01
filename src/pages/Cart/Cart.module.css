@@ -1,0 +1,224 @@
+.cart {
+  /* margin: 100px 0px; */
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 20vw;
+  height: fit-content;
+  border-radius: 12px;
+  background-color: rgba(250, 250, 250, 1);
+}
+.share{
+  background-color: rgba(252, 138, 6, 1);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.cartitemstitle {
+  display: flex;
+  background-color: rgba(2, 134, 67, 1);
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  background-size: cover;
+  border-radius: 12px 12px 0 0;
+}
+.cartitemstitle div p {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+}
+.fooditems {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+  align-items: center;
+  min-height: fit-content;
+}
+.count {
+  background-color: rgba(252, 138, 6, 1);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 1);
+  font-family: Poppins;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding: 10px;
+}
+.mid {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 25px;
+  
+}
+.mid span {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 25px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgb(2, 134, 67, 1);
+}
+.mid {
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.delete img {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.cartitemstitle div img {
+  height: 40px;
+  width: 40px;
+}
+.cartotal {
+  display: flex;
+  flex-direction: column;
+}
+.carttotaldetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px 4px 10px;
+}
+.cartsumdetails span {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 10px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+  align-items: center;
+}
+.cartsumdetails {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 10px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  background-color: rgba(252, 138, 6, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 5px 10px 5px;
+}
+.code img {
+  height: 20px;
+  width: 20px;
+}
+.code {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(207, 207, 207, 1);
+  border-radius: 120px;
+  margin: 10px 5px 10px 5px;
+}
+.checkout {
+  padding: 10px;
+}
+.deli {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.sc img,
+.sh img {
+  height: 30px;
+  width: 30px;
+}
+.sc {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-color: rgba(238, 238, 238, 1);
+  padding: 7px;
+}
+.sc,
+.sh {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sc p,
+.sh p {
+  font-family: Poppins;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 15px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.sh p{
+  opacity: 0.5;
+}
+.verticalline {
+  width: 2px;
+  height: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.checkout button {
+  background-color: rgba(2, 134, 67, 1);
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+}
+.checkout button img {
+  height: 20px;
+  width: 20px;
+}

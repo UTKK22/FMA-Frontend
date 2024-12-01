@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-shadow: 5px 5px 14px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.map {
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.display {
+  z-index: 1000;
+  position: absolute;
+  text-align: left;
+  background-color: rgba(3, 8, 31, 0.97);
+  border-radius: 14px;
+  padding: 30px 10px 30px 10px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: 500;
+  height: 270px;
+  width: fit-content;
+  left: 10%;
+  top: 17%;
+}
+.mc {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+}
+.mc span {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(252, 138, 6, 1);
+}
+p span {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(252, 138, 6, 1);
+}
+.display div p p {
+    font-size: 12px;
+}
+

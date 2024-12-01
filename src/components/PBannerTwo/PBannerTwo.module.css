@@ -1,0 +1,145 @@
+.container {
+  box-shadow: 5px 5px 14px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(251, 251, 251, 1);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.i1 img,
+.n1 img,
+.f1 img {
+  height: 30px;
+  width: 30px;
+  margin-top: 4px;
+  margin-right: 20px;
+}
+.i1,
+.n1,
+.f1 {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+  margin-bottom: 10px;
+}
+.i2,
+.i3,
+.i4,
+.i5,
+.i6,
+.i7,
+.i8,
+.i9 {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 29px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+.i2 span,
+.i3 span,
+.i4 span,
+.i5 span,
+.i6 span,
+.i7 span,
+.i8 span,
+.i9 span {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 29px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.n2 {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.n3 span,
+.n4 span {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+.n3,
+.n4 {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+.info1{
+    padding: 30px 0 30px 30px;
+}
+.info2{
+    padding:30px 0 30px 0;
+}
+.info3 {
+  background-color: rgba(3, 8, 31, 1);
+  box-shadow: 5px 5px 14px 0px rgba(0, 0, 0, 0.25);
+  padding: 30px 20px 30px 20px;
+}
+.f1 {
+  color: rgba(255, 255, 255, 1);
+}
+.f2,
+.f3,
+.f4,
+.f5,
+.f6,
+.f7,
+.f8 {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 29px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+.f2 span,
+.f3 span,
+.f4 span,
+.f5 span,
+.f6 span,
+.f7 span,
+.f8 span{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 30px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(255, 255, 255, 1);    
+}
