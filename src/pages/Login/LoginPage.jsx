@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import styles from "../Login/loginPage.module.css";
+import styles from "../Login/LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
-import Footer from '../../components/Footer/Footer';
 const LoginPage = ({ setIsLoggedIn,page }) => {
   const [currState, setCurrState] =  useState(page === "signup" ? "Sign up" : "Sign in");
   const [formData, setFormData] = useState({

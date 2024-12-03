@@ -413,19 +413,14 @@ const styles = {
     border: "1px solid #ccc",
     padding: "5px 10px",
     borderRadius: "8px",
-    width: "200px",
     boxSizing: "border-box",
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "10px",
+    backgroundColor: "white",
+    width:"240px"
   },
-  //   addCardButton: {
-  //     padding: "1rem",
-  //     gap:"10px",
-  //     border: "none",
-  //     borderRadius: "8px",
-  //     cursor: "pointer",
-  //     fontWeight:"300",
-  //   },
   addCardButton: {
     display: "flex",
     alignItems: "center",
@@ -441,21 +436,21 @@ const styles = {
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Optional shadow for the button
     transition: "background-color 0.3s ease",
   },
-  circleContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(252, 138, 6, 0.25)",
-    color: "rgba(252, 138, 6, 1)",
-    borderRadius: "50%",
-    height: "30px",
-    width: "30px",
-  },
-  plusSymbol: {
-    fontSize: "20px",
-    lineHeight: "10px",
-    fontWeight: "700",
-  },
+  // circleContainer: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   backgroundColor: "rgba(252, 138, 6, 0.25)",
+  //   color: "rgba(252, 138, 6, 1)",
+  //   borderRadius: "50%",
+  //   height: "30px",
+  //   width: "30px",
+  // },
+  // plusSymbol: {
+  //   fontSize: "20px",
+  //   lineHeight: "10px",
+  //   fontWeight: "700",
+  // },
 
   addCardText: {
     fontSize: "16px",
@@ -500,17 +495,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: "4px",
   },
-  card: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "10px",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    marginBottom: "10px",
-    backgroundColor: "white",
-    width:"240px"
-  },
+  
   circleContainer: {
     display: "flex",
     alignItems: "center",
@@ -537,8 +522,8 @@ const styles = {
     justifyContent: "center",
   },
   editIcon: {
-    height: "20px",
-    width: "20px",
+    height: "15px",
+    width: "15px",
     cursor: "pointer",
   },
 };
