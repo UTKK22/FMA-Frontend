@@ -230,7 +230,7 @@
   }
 }
 
-
+/* For devices between 1049px and 1399px */
 @media (max-width: 1399px) {
   .navbar {
     width: 80vw;
@@ -261,7 +261,7 @@
   }
 }
 
-
+/* For devices between 899px and 1049px */
 @media (max-width: 1049px) {
   .navbar {
     width: 90vw;

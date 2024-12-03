@@ -222,3 +222,50 @@
   height: 20px;
   width: 20px;
 }
+.share,
+  .cartitemstitle,
+  .fooditems,
+  .cartotal,
+  .code,
+  .checkout,
+  .deli,
+  .sc,
+  .sh {
+    display: none;
+  }
+
+  
+  .cartitemstitle, 
+  .fooditems, 
+  .carttotal {
+    display: block;
+  }
+
+
+
+@media (max-width: 1199px) {
+  .cart {
+    width: 50vw;
+  }
+
+  .cartitemstitle {
+    padding: 15px; 
+  }
+
+  .fooditems {
+    padding: 0 15px; 
+  }
+
+  .carttotaldetails,
+  .code {
+    font-size: 14px; 
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .cart {
+    width: 20vw;
+    margin-top: 30px;
+  }
+}

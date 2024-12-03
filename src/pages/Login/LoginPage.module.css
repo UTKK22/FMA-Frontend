@@ -95,4 +95,19 @@ body, html {
       max-width: 100%;
     }
   }
+  @media (max-width: 480px) {
+    .loginupper {
+      flex-direction: column;
+    }
+  
+    .loginformsection {
+      max-width: 100%;
+      padding: 20px;
+    }
+  
+    .loginimagesection img {
+      display: none;
+    }
+  }
+
   
