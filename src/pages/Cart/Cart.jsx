@@ -11,6 +11,7 @@ const Cart = () => {
     getTotalCartAmount,
     url,
     currency,
+    groupedFood,
     discount,
     deliveryCharge,
   } = useContext(StoreContext);
@@ -117,28 +118,38 @@ const Cart = () => {
             </div>
           </div>
           <hr />
-          {food_list.map((item, index) => {
-            if (cartItems[item._id] > 0) {
-              return (
-                <div key={index} className={styles.comp}>
-                  <div className={styles.fooditems}>
-                    <div className={styles.count}>{cartItems[item._id]}x</div>
-                    <div className={styles.mid}>
-                      <span> ₹{item.price}</span>
-                      <p>{item.name}</p>
+          {groupedFood.map((category) => (
+            <div key={category.category}>
+              
+              {category.items.map((item) => {
+                if (cartItems[item._id] > 0) {
+                  return (
+                    <div key={item._id} className={styles.comp}>
+                      <div className={styles.fooditems}>
+                        <div className={styles.count}>
+                          {cartItems[item._id]}x
+                        </div>
+                        <div className={styles.mid}>
+                          <span> ₹{item.price}</span>
+                          <p>{item.name}</p>
+                        </div>
+                        <p
+                          className={styles.delete}
+                          onClick={() => removeFromCart(item._id)}
+                        >
+                          <img
+                            src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732867956/l1gj2n1g5qcn3frszvho.png"
+                            alt="delete"
+                          />
+                        </p>
+                      </div>
+                      <hr />
                     </div>
-                    <p
-                      className={styles.delete}
-                      onClick={() => removeFromCart(item._id)}
-                    >
-                      <img src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732867956/l1gj2n1g5qcn3frszvho.png" />
-                    </p>
-                  </div>
-                  <hr />
-                </div>
-              );
-            }
-          })}
+                  );
+                }return null;
+              })}
+            </div>
+          ))}
         </div>
         <div className="cart-bottom">
           <div>

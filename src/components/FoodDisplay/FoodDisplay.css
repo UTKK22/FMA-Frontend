@@ -16,4 +16,21 @@
   row-gap: 50px;
 
 }
+.food-category {
+  margin-bottom: 2rem;
+}
+
+.food-category h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.food-category-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.6rem;
+}
+
+
 

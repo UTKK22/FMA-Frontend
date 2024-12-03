@@ -3,9 +3,8 @@ import { StoreContext } from "../../context/StoreContext";
 import styles from "../OrderComplete/OrderComplete.module.css";
 import Header from "../Header/Header";
 import { useNavigate } from "react-router-dom";
-import { food_list } from "../../assets/assets";
 const OrderComplete = () => {
-  const { clearCart, cartItems } = useContext(StoreContext);
+  const { clearCart, cartItems,groupedFood } = useContext(StoreContext);
   console.log("cartItems",{cartItems})
   const navigate = useNavigate();
   const handlechange = () => {
@@ -13,7 +12,7 @@ const OrderComplete = () => {
     clearCart();
   };
   
-
+  const allFoodItems = groupedFood.flatMap((category) => category.items);
   return (
     <>
       <Header />
@@ -51,8 +50,8 @@ const OrderComplete = () => {
           </div>
         </div>
         <div className={styles.footer}>
-          <div style={{ width: "10vw", maxHeight: "fitcontent" ,padding:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-            {food_list.map((item, index) => {
+          <div style={{ width: "14vw", maxHeight: "fitcontent" ,padding:"10px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            {allFoodItems.map((item, index) => {
               if ((cartItems[item._id] ?? 0) > 0) {
                 return (
                   <div key={index}>

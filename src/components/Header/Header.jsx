@@ -47,6 +47,12 @@ const Header = () => {
   const handleprofile=()=>{
     navigate('/profile');
   }
+  const handlehome=()=>{
+      navigate('/home');
+  }
+  const handleres=()=>{
+    navigate('/product');
+  }
   return (
     // <div className='header'>
     //   <div className='header-contents'>
@@ -60,12 +66,12 @@ const Header = () => {
         <img src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732252821/mnpw8ydvkgypep60azfe.png"></img>
       </div>
       <div className={styles.pointer}>
-        <div className={currentPath === "/home" ? styles.highlight : ""}>
+        <div className={currentPath === "/home" ? styles.highlight : styles.point} onClick={handlehome}>
           Home
         </div>
         <div>Browse Menu</div>
         <div>Special Offers</div>
-        <div className={currentPath === "/product" ? styles.highlight : ""}>
+        <div className={currentPath === "/product" ? styles.highlight : styles.point} onClick={handleres}>
           Restaurants
         </div>
         <div>Track Order</div>

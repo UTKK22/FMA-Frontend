@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../Home/Home.module.css";
 import Header from "../../components/Header/Header";
-import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
+// import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
 import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
 import AppDownload from "../../components/AppDownload/AppDownload";
 import ResForm from "../../components/ResForm/ResForm";
@@ -17,12 +17,6 @@ const Home = () => {
   return (
     <div className={styles.header}>
       <Header />
-      {/* <ExploreMenu category = {category} setCategory = {setCategory}/>
-      <FoodDisplay category={category}/>
-      <div className='home_resform'><ResForm category = {category} setCategory= {setCategory}/></div>
-      <div className='app-download-main'>
-      <AppDownload/>
-      </div> */}
         <BannerOne/>
         <BannerTwo/>
         <BannerThree/>

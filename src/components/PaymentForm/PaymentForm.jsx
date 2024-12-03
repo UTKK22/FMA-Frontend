@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./PaymentForm.module.css";
 import { StoreContext } from "../../context/StoreContext";
 import Header from "../Header/Header";
+import axios from "axios";
 
 const PaymentForm = ({ onBack, onNext }) => {
   const [paymentData, setPaymentData] = useState({
@@ -19,10 +20,28 @@ const PaymentForm = ({ onBack, onNext }) => {
   const cartTotalAmount = getTotalCartAmount();
   const salestax = 20;
 
-  // Load stored cards from localStorage on component mount
+
   useEffect(() => {
-    const cards = JSON.parse(localStorage.getItem("storedCards")) || [];
-    setStoredCards(cards);
+    const fetchStoredCards = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("You are not authenticated. Please log in.");
+          return;
+        }
+
+        const response = await axios.get("http://localhost:3000/cards", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log({response});
+        setStoredCards(response.data);
+      } catch (error) {
+        console.error("Failed to fetch stored cards:", error);
+        alert("Unable to load saved cards. Please try again.");
+      }
+    };
+
+    fetchStoredCards();
   }, []);
 
   const handleChange = (e) => {
@@ -33,7 +52,8 @@ const PaymentForm = ({ onBack, onNext }) => {
     }));
   };
 
-  const handleAddCard = () => {
+  const handleAddCard = async (e) => {
+    e.preventDefault();
     if (
       paymentData.cardName &&
       paymentData.cardNumber &&
@@ -41,21 +61,37 @@ const PaymentForm = ({ onBack, onNext }) => {
       paymentData.cvv &&
       paymentData.nameOnCard
     ) {
-      const updatedCards = [...storedCards, paymentData];
-      setStoredCards(updatedCards);
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("You are not authenticated. Please log in.");
+          return;
+        }
 
-      // Save updated cards to localStorage
-      localStorage.setItem("storedCards", JSON.stringify(updatedCards));
+        const response = await axios.post(
+          "http://localhost:3000/cards",
+          { ...paymentData },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
-      // Reset payment data and close modal
-      setPaymentData({
-        cardName: "",
-        cardNumber: "",
-        expiryDate: "",
-        cvv: "",
-        nameOnCard: "",
-      });
-      setIsModalOpen(false);
+        
+        setStoredCards((prevCards) => [...prevCards, response.data]);
+
+        
+        setPaymentData({
+          cardName: "",
+          cardNumber: "",
+          expiryDate: "",
+          cvv: "",
+          nameOnCard: "",
+        });
+        setIsModalOpen(false);
+      } catch (error) {
+        console.error("Failed to add card:", error);
+        alert("Unable to add card. Please try again.");
+      }
     } else {
       alert("Please fill in all card details.");
     }
@@ -73,31 +109,12 @@ const PaymentForm = ({ onBack, onNext }) => {
   return (
     <>
       <Header />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          marginTop: "40px",
-          marginBottom: "40px",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "40px", marginBottom: "40px" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{
-            cursor:"pointer",
-          }} onClick={onBack}>
+          <div style={{ cursor: "pointer" }} onClick={onBack}>
             <img src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732962190/rzasnday5pndckkjnetg.png" />
           </div>
-          <div
-            style={{
-              color: "rgba(0, 0, 0, 1)",
-              fontFamily: "Poppins",
-              fontWeight: "600",
-              fontSize: "32px",
-              letterSpacing: "1.2",
-              marginLeft: "6px",
-            }}
-          >
+          <div style={{ color: "rgba(0, 0, 0, 1)", fontFamily: "Poppins", fontWeight: "600", fontSize: "32px", letterSpacing: "1.2", marginLeft: "6px" }}>
             Choose and Pay
           </div>
         </div>
@@ -115,23 +132,9 @@ const PaymentForm = ({ onBack, onNext }) => {
               <div>
                 Wallet
                 <br />
-                <span className={styles.walletBalance}>
-                  Available balance: ₹300
-                </span>
+                <span className={styles.walletBalance}>Available balance: ₹300</span>
               </div>
-              <div
-                style={{
-                  color: "rgba(252, 138, 6, 1)",
-                  fontSize: "35px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: "8px",
-                  cursor: "pointer",
-                  marginLeft:"31vw"
-                }}
-              
-              >
+              <div style={{ color: "rgba(252, 138, 6, 1)", fontSize: "35px", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "8px", cursor: "pointer", marginLeft: "31vw" }}>
                 ˃
               </div>
             </div>
@@ -142,22 +145,16 @@ const PaymentForm = ({ onBack, onNext }) => {
                 <div className={styles.walletCircle}>
                   {card.cardName.charAt(0).toUpperCase()}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center",width:"100%" }}>
                   <div>{card.cardName}</div>
-                  <div>
+                  <div >
                     <input
                       type="radio"
                       name="selectedCard"
                       value={index}
                       checked={selectedCard === index}
                       onChange={() => setSelectedCard(index)}
-                      style={{ marginLeft: "37vw" }}
+                      style={{}}
                     />
                   </div>
                 </div>
@@ -165,31 +162,14 @@ const PaymentForm = ({ onBack, onNext }) => {
             ))}
 
             {/* Add Card Button */}
-            <div
-              className={styles.addCardButton}
-              onClick={() => setIsModalOpen(true)}
-            >
+            <div className={styles.addCardButton} onClick={() => setIsModalOpen(true)}>
               <span style={{ fontSize: "30px" }}>+</span> Add Card
             </div>
           </div>
 
           <div className={styles.column2}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "Poppins",
-                  fontWeight: "400",
-                  fontSize: "18px",
-                  lineHeight: "20px",
-                  letterSpacing: "1.2",
-                  color: "rgba(131, 133, 138, 1)",
-                }}
-              >
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ fontFamily: "Poppins", fontWeight: "400", fontSize: "18px", lineHeight: "20px", letterSpacing: "1.2", color: "rgba(131, 133, 138, 1)" }}>
                 Amount to be paid
               </div>
               <div>
@@ -212,7 +192,8 @@ const PaymentForm = ({ onBack, onNext }) => {
                 fontSize: "18px",
                 lineHeight: "20px",
                 letterSpacing: "1.2",
-              }} onClick={handleSubmit}
+              }}
+              onClick={handleSubmit}
             >
               <div>Proceed Payment</div>
             </div>
@@ -221,53 +202,19 @@ const PaymentForm = ({ onBack, onNext }) => {
       </div>
 
       {/* Modal for Adding Card */}
-      {/* Modal for Adding Card */}
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <button
-              className={styles.modalClose}
-              onClick={() => setIsModalOpen(false)}
-            >
+            <button className={styles.modalClose} onClick={() => setIsModalOpen(false)}>
               ✕
             </button>
             <form onSubmit={handleAddCard}>
               <h3>Add a New Card</h3>
-              <input
-                type="text"
-                name="cardName"
-                value={paymentData.cardName}
-                onChange={handleChange}
-                placeholder="Card Name"
-              />
-              <input
-                type="text"
-                name="cardNumber"
-                value={paymentData.cardNumber}
-                onChange={handleChange}
-                placeholder="Card Number"
-              />
-              <input
-                type="text"
-                name="expiryDate"
-                value={paymentData.expiryDate}
-                onChange={handleChange}
-                placeholder="MM/YY"
-              />
-              <input
-                type="text"
-                name="cvv"
-                value={paymentData.cvv}
-                onChange={handleChange}
-                placeholder="CVV"
-              />
-              <input
-                type="text"
-                name="nameOnCard"
-                value={paymentData.nameOnCard}
-                onChange={handleChange}
-                placeholder="Name on Card"
-              />
+              <input type="text" name="cardName" value={paymentData.cardName} onChange={handleChange} placeholder="Card Name" />
+              <input type="text" name="cardNumber" value={paymentData.cardNumber} onChange={handleChange} placeholder="Card Number" />
+              <input type="text" name="expiryDate" value={paymentData.expiryDate} onChange={handleChange} placeholder="MM/YY" />
+              <input type="text" name="cvv" value={paymentData.cvv} onChange={handleChange} placeholder="CVV" />
+              <input type="text" name="nameOnCard" value={paymentData.nameOnCard} onChange={handleChange} placeholder="Name on Card" />
               <div className={styles.modalButtons}>
                 <button type="button" onClick={() => setIsModalOpen(false)}>
                   Cancel

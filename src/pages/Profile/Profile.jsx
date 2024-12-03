@@ -45,8 +45,8 @@ const Profile = () => {
           gender: response.data.gender || "",
           nationality: response.data.nationality || "",
         });
-        const cards = JSON.parse(localStorage.getItem("storedCards")) || [];
-        setSavedCards(cards || response.data.cards);
+        // const cards = JSON.parse(localStorage.getItem("storedCards")) || [];
+        setSavedCards(response.data.cards);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -85,7 +85,11 @@ const Profile = () => {
       );
       setProfile(response.data);
       setEditMode(false);
-      const updatedUser = { ...JSON.parse(localStorage.getItem("user")), name: formData.name ,email:formData.email};
+      const updatedUser = {
+        ...JSON.parse(localStorage.getItem("user")),
+        name: formData.name,
+        email: formData.email,
+      };
       localStorage.setItem("user", JSON.stringify(updatedUser));
       alert("Profile updated successfully");
     } catch (err) {
@@ -107,7 +111,6 @@ const Profile = () => {
       );
       const updatedCards = [...savedCards, response.data];
       setSavedCards(updatedCards);
-      localStorage.setItem("storedCards", JSON.stringify(updatedCards));
       setShowCardModal(false);
       setNewCard({
         cardName: "",
@@ -125,6 +128,12 @@ const Profile = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
+  const maskCardNumber = (cardNumber) => {
+    return cardNumber
+      .toString()
+      .replace(/\d(?=\d{4})/g, "*")
+      .replace(/(\d{4})(?=\d)/g, "$1 ");
+  };
 
   return (
     <div style={{ padding: "1rem", maxWidth: "80vw", margin: "0 auto" }}>
@@ -233,8 +242,31 @@ const Profile = () => {
         <div style={styles.cardRow}>
           {savedCards.map((card, index) => (
             <div key={index} style={styles.card}>
-              <p>Card Number:{card.cardNumber}</p>
-              <p>Expiry: {card.expiryDate}</p>
+              <div style={styles.circleContainer}>
+                <img
+                  style={styles.plusSymbol}
+                  src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1733208879/bjpj6hhtbc3qmexmdtpe.png"
+                  alt="Plus Symbol"
+                />
+              </div>
+
+             
+              <div style={styles.cardDetails}>
+                <div>{maskCardNumber(card.cardNumber)}</div>
+                <div style={{
+                  color:"rgba(0, 0, 0, 1)",
+                  opacity:"50%"
+                }}>{card.nameOnCard}</div>
+              </div>
+
+             
+              <div style={styles.editIconContainer}>
+                <img
+                  style={styles.editIcon}
+                  src="https://res.cloudinary.com/dkhkrzfz0/image/upload/v1733209057/otqaejyluv53zxfgwppl.png"
+                  alt="Edit Icon"
+                />
+              </div>
             </div>
           ))}
           <button
@@ -262,6 +294,7 @@ const Profile = () => {
               onChange={(e) =>
                 setNewCard({ ...newCard, cardName: e.target.value })
               }
+              placeholder=" eg. Mastero/Master"
               style={styles.input}
             />
             <label>Card Number</label>
@@ -272,6 +305,7 @@ const Profile = () => {
               onChange={(e) =>
                 setNewCard({ ...newCard, cardNumber: e.target.value })
               }
+              placeholder="Valid 16 digit Card Number"
               style={styles.input}
             />
             <label>CVV</label>
@@ -280,6 +314,7 @@ const Profile = () => {
               name="cvv"
               value={newCard.cvv}
               onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })}
+              placeholder="CVV"
               style={styles.input}
             />
             <label>Name On Card</label>
@@ -290,6 +325,7 @@ const Profile = () => {
               onChange={(e) =>
                 setNewCard({ ...newCard, nameOnCard: e.target.value })
               }
+              placeholder="Name"
               style={styles.input}
             />
             <label>Expiry Date</label>
@@ -300,6 +336,7 @@ const Profile = () => {
               onChange={(e) =>
                 setNewCard({ ...newCard, expiryDate: e.target.value })
               }
+              placeholder="MM/YY"
               style={styles.input}
             />
             <button onClick={handleAddCard} style={styles.saveButton}>
@@ -370,14 +407,16 @@ const styles = {
     gap: "1rem",
     alignItems: "center",
     justifyContent: "space-between",
+    width: "100%",
   },
   card: {
-    flex: "1 1 calc(33.333% - 1rem)",
     border: "1px solid #ccc",
-    padding: "1rem",
+    padding: "5px 10px",
     borderRadius: "8px",
     width: "200px",
     boxSizing: "border-box",
+    display: "flex",
+    justifyContent: "space-between",
   },
   //   addCardButton: {
   //     padding: "1rem",
@@ -414,9 +453,10 @@ const styles = {
   },
   plusSymbol: {
     fontSize: "20px",
-    lineHeight: "30px", // Ensures proper alignment inside the circle
+    lineHeight: "10px",
     fontWeight: "700",
   },
+
   addCardText: {
     fontSize: "16px",
     fontWeight: "400",
@@ -452,7 +492,7 @@ const styles = {
   },
   cancelButton: {
     marginTop: "1rem",
-    marginLeft:"1rem",
+    marginLeft: "1rem",
     padding: "0.5rem 1rem",
     backgroundColor: "gray",
     color: "white",
@@ -460,6 +500,48 @@ const styles = {
     cursor: "pointer",
     borderRadius: "4px",
   },
+  card: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "8px",
+    marginBottom: "10px",
+    backgroundColor: "white",
+    width:"240px"
+  },
+  circleContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    backgroundColor: "#e0e0e0",
+  },
+  plusSymbol: {
+    height: "17px",
+    width: "17px",
+  },
+  cardDetails: {
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    marginLeft: "10px",
+    color:"rgba(0, 0, 0, 1)",
+  },
+  editIconContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  editIcon: {
+    height: "20px",
+    width: "20px",
+    cursor: "pointer",
+  },
 };
+
 
 export default Profile;

@@ -1,4 +1,3 @@
-// src/components/Checkout.js
 import React, { useState, useContext } from 'react';
 import ShippingForm from '../ShippingForm/ShippingForm';
 import PaymentForm from '../PaymentForm/PaymentForm';
@@ -15,6 +14,7 @@ const Checkout = () => {
     payment: {},
   });
   const { clearCart } = useContext(StoreContext);
+  const [selectedAddress, setSelectedAddress] = useState(null); // Track selected address
 
   const handleNext = (data) => {
     setFormData((prev) => ({
@@ -29,15 +29,32 @@ const Checkout = () => {
   };
 
   const handleOrderComplete = () => {
-    clearCart(); 
-    setCurrentStep(3); 
+    clearCart();
+    setCurrentStep(3);
+  };
+
+  const handleAddressSelected = (address) => {
+    setSelectedAddress(address); 
+    setCurrentStep(1); 
   };
 
   return (
     <div className="checkout">
-      {currentStep === 1 && <ReviewForm onNext={handleNext} />}
-      {currentStep === 2 && <PaymentForm onBack={handleBack} onNext={handleNext}/>}
+      {currentStep === 1 && (
+        <ReviewForm
+          onNext={handleNext}
+          selectedAddress={selectedAddress} 
+          onEditAddress={() => setCurrentStep(4)} 
+        />
+      )}
+      {currentStep === 2 && <PaymentForm onBack={handleBack} onNext={handleNext} />}
       {currentStep === 3 && <OrderComplete onComplete={handleOrderComplete} />}
+      {currentStep === 4 && (
+        <AddressForm
+          onBack={() => setCurrentStep(1)}
+          updateNavbar={handleAddressSelected} 
+        />
+      )}
     </div>
   );
 };

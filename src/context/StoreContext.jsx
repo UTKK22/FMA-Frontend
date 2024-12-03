@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { food_list } from '../assets/assets';
+
 
 export const StoreContext = createContext(null);
 
@@ -9,8 +9,21 @@ const StoreContextProvider = (props) => {
     return savedCartItems ? JSON.parse(savedCartItems) : {};
   });
   const [showCart, setShowCart] = useState(false);
+  const [groupedFood, setGroupedFood] = useState([]);
   const deliveryCharge = 10;
   const discount=8;
+  useEffect(() => {
+    const fetchGroupedFood = async () => {
+      const response = await fetch('http://localhost:3000/food');
+      const data = await response.json();
+      const grouped = data.map(category => ({
+        category: category.name,
+        items: category.products,
+      }));
+      setGroupedFood(grouped); 
+    };
+    fetchGroupedFood();
+  }, []);
   const addToCart = (itemId) => {
     setCartItems((prev) => {
       const newCartItems = { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
@@ -42,20 +55,25 @@ const StoreContextProvider = (props) => {
   
 
   const getTotalCartAmount = () => {
-    return Object.keys(cartItems).reduce((total, itemId) => {
-      const item = food_list.find((item) => item._id === itemId);
-      return item ? total + item.price * cartItems[itemId] : total;
-    }, 0);
-  };
+    const allItems = groupedFood.flatMap(category => category.items);
 
+  return Object.keys(cartItems).reduce((total, itemId) => {
+    const item = allItems.find((item) => item._id === itemId); 
+    if (item) {
+      return total + item.price * cartItems[itemId];
+    }
+    return total;
+  }, 0);
+  };
+  
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   const contextValue = {
-    food_list,
     setCartItems,
     addToCart,
+    groupedFood,
     removeFromCart,
     cartItems,
     getTotalCartAmount,

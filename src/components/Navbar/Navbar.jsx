@@ -16,11 +16,8 @@ const Navbar = ({ setShowLogin, setIsLoggedIn: updateIsLoggedIn }) => {
   const { cartItems, getTotalCartAmount, setShowCart } = useContext(StoreContext);
 
   const handleCartClick = () => {
-    if (getTotalCartAmount() === 0) {
-      setShowPopup(true);
-    } else {
       setShowCart((prev) => !prev);
-    }
+      navigate('/product');
   };
   useEffect(() => {
     const total = Object.values(cartItems).reduce((sum, count) => sum + count, 0);

@@ -1,6 +1,7 @@
 .main{
     background: url("https://res.cloudinary.com/dkhkrzfz0/image/upload/v1732784816/flvoi0tuxj5qpggye260.png")
     no-repeat;
+    border-radius: 16px;
     background-size: cover;
 }
 .conatiner {

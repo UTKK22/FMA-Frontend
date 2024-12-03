@@ -4,14 +4,16 @@ import styles from "../ReviewForm/ReviewForm.module.css";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import AddressForm from "../AddressForm/AddressForm";
-function ReviewForm({onNext}) {
-  const { setShowCart } = useContext(StoreContext);
-  const[totaItems,setTotalItems]=useState(0);
+function ReviewForm({ onNext, selectedAddress, onEditAddress }) {
+  console.log("selected address",{selectedAddress});
+  const { showCart, setShowCart } = useContext(StoreContext);
+  const [totaItems, setTotalItems] = useState(0);
   const {
     cartItems,
     food_list,
     removeFromCart,
     getTotalCartAmount,
+    groupedFood,
     url,
     currency,
     deliveryCharge,
@@ -27,7 +29,7 @@ function ReviewForm({onNext}) {
     navigate("/address");
   };
   const handleChoosePayment = () => {
-    onNext(); 
+    onNext();
   };
   useEffect(() => {
     const total = Object.values(cartItems).reduce(
@@ -36,10 +38,11 @@ function ReviewForm({onNext}) {
     );
     setTotalItems(total);
   }, [cartItems]);
+  const allFoodItems = groupedFood.flatMap((category) => category.items);
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <div className={styles.review} >
+        <div className={styles.review}>
           <div className={styles.header}>
             <p>
               <span>
@@ -48,9 +51,9 @@ function ReviewForm({onNext}) {
               Your Order Details
             </p>
           </div>
-          <div className={styles.mflex}style={{marginTop:"20px"}}>
+          <div className={styles.mflex} style={{ marginTop: "20px" }}>
             <div>
-              {food_list.map((item, index) => {
+              {allFoodItems.map((item, index) => {
                 if (cartItems[item._id] > 0) {
                   return (
                     <div key={index}>
@@ -65,7 +68,7 @@ function ReviewForm({onNext}) {
                           <div>
                             <img
                               className={styles.cartitemimage}
-                              src={item.image}
+                              src={item.img}
                               alt=""
                             />
                           </div>
@@ -169,7 +172,9 @@ function ReviewForm({onNext}) {
                 Delivery Address
                 <br />
                 <span style={{ color: "rgba(131, 133, 138, 1)" }}>
-                  45, Green Street, Sector 12...
+                  {selectedAddress
+                    ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state}`
+                    : "Regent Street, A4, A4201, London"}
                 </span>
               </div>
             </div>
@@ -183,26 +188,26 @@ function ReviewForm({onNext}) {
                 marginTop: "8px",
                 cursor: "pointer",
               }}
-              onClick={handlenext}
+              onClick={onEditAddress}
             >
               ˃
             </div>
           </div>
-          <br/>
+          <br />
           <hr />
-          
+
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap:"10px"
+              gap: "10px",
             }}
           >
             <div
               style={{
                 display: "flex",
-                justifyContent:"space-between",
-                color:"rgba(131, 133, 138, 1)"
+                justifyContent: "space-between",
+                color: "rgba(131, 133, 138, 1)",
               }}
             >
               <div>Items</div>
@@ -211,54 +216,63 @@ function ReviewForm({onNext}) {
             <div
               style={{
                 display: "flex",
-                justifyContent:"space-between",
-                color:"rgba(131, 133, 138, 1)"
+                justifyContent: "space-between",
+                color: "rgba(131, 133, 138, 1)",
               }}
             >
-                
-              <div >Sales Tax</div>
+              <div>Sales Tax</div>
               <div>{salestax}</div>
             </div>
           </div>
-          <hr/>
-          <div style={{
-            display:"flex",
-            justifyContent:"space-between",
-            marginTop:"10px",
-            color:"rgba(131, 133, 138, 1)"
-          }}>
-            <div>
-                Subtotal({totaItems} items)
-            </div>
-            <div style={{
-                fontFamily:"Poppins",
-                fontSize:"18px",
-                fontWeight:"1000",
-                color:"rgba(0, 0, 0, 1)"
-            }}><b>₹{cartTotalAmount+salestax}</b></div>
-          </div>
-          
+          <hr />
           <div
-          style={{
-            backgroundColor:"rgba(252, 138, 6, 1)",
-            padding:"12px 10px",
-            display:"flex",
-            justifyContent:"center",
-            borderRadius:"100px",
-            marginTop:"25px"
-          }}>
-            <div style={{
-                font:"Poppins",
-                fontWeight:"600",
-                fontSize:"14px",
-                lineHeight:"19px",
-                color:"rgba(255, 255, 255, 1)",
-                cursor:"pointer"
-            }} onClick={handleChoosePayment}>Choose Payment Method</div>
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "10px",
+              color: "rgba(131, 133, 138, 1)",
+            }}
+          >
+            <div>Subtotal({totaItems} items)</div>
+            <div
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "18px",
+                fontWeight: "1000",
+                color: "rgba(0, 0, 0, 1)",
+              }}
+            >
+              <b>₹{cartTotalAmount + salestax}</b>
+            </div>
+          </div>
+
+          <div
+            style={{
+              backgroundColor: "rgba(252, 138, 6, 1)",
+              padding: "12px 10px",
+              display: "flex",
+              justifyContent: "center",
+              borderRadius: "100px",
+              marginTop: "25px",
+            }}
+          >
+            <div
+              style={{
+                font: "Poppins",
+                fontWeight: "600",
+                fontSize: "14px",
+                lineHeight: "19px",
+                color: "rgba(255, 255, 255, 1)",
+                cursor: "pointer",
+              }}
+              onClick={handleChoosePayment}
+            >
+              Choose Payment Method
+            </div>
           </div>
         </div>
       </div>
-      
+
       <BannerFour />
     </div>
   );
