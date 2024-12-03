@@ -14,7 +14,7 @@ const StoreContextProvider = (props) => {
   const discount=8;
   useEffect(() => {
     const fetchGroupedFood = async () => {
-      const response = await fetch('http://localhost:3000/food');
+      const response = await fetch('https://fma-backend-a7xw.onrender.com/food');
       const data = await response.json();
       const grouped = data.map(category => ({
         category: category.name,

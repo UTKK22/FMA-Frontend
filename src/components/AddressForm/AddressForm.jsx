@@ -20,7 +20,7 @@ const AddressForm = ({ onBack, updateNavbar }) => {
   const handleAddAddress = async (address) => {
     setAddresses((prev) => [...prev, address]);
     setIsModalOpen(false);
-    await axios(`http://localhost:3000/addresses`, {
+    await axios(`https://fma-backend-a7xw.onrender.com/addresses`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       data: { ...address,userId },
@@ -40,7 +40,7 @@ const AddressForm = ({ onBack, updateNavbar }) => {
   useEffect(() => {
     const fetchProfileAndAddress = async () => {
       try {
-        const response = await axios(`http://localhost:3000/addresses/${userId}`, {
+        const response = await axios(`https://fma-backend-a7xw.onrender.com/addresses/${userId}`, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
         });

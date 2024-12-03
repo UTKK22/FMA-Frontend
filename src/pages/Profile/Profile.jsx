@@ -29,7 +29,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios("http://localhost:3000/profile", {
+        const response = await axios("https://fma-backend-a7xw.onrender.com/profile", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ const Profile = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        "http://localhost:3000/profile",
+        "https://fma-backend-a7xw.onrender.com/profile",
         {
           name: formData.name,
           email: formData.email,
@@ -103,7 +103,7 @@ const Profile = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3000/cards",
+        "https://fma-backend-a7xw.onrender.com/cards",
         { ...newCard },
         {
           headers: { Authorization: `Bearer ${token}` },

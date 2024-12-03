@@ -30,7 +30,7 @@ const PaymentForm = ({ onBack, onNext }) => {
           return;
         }
 
-        const response = await axios.get("http://localhost:3000/cards", {
+        const response = await axios.get("https://fma-backend-a7xw.onrender.com/cards", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log({response});
@@ -69,7 +69,7 @@ const PaymentForm = ({ onBack, onNext }) => {
         }
 
         const response = await axios.post(
-          "http://localhost:3000/cards",
+          "https://fma-backend-a7xw.onrender.com/cards",
           { ...paymentData },
           {
             headers: { Authorization: `Bearer ${token}` },

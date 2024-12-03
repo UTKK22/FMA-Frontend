@@ -12,7 +12,7 @@ const FoodDisplay = () => {
     const fetchFoodData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/food'); 
+        const response = await axios.get('https://fma-backend-a7xw.onrender.com/food'); 
         const data = response.data;
         console.log("data in food display",data);
         // Group food items by category

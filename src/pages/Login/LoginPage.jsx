@@ -21,8 +21,8 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     const url =
       currState === "Sign in"
-        ? "http://localhost:3000/login"
-        : "http://localhost:3000/signup";
+        ? "https://fma-backend-a7xw.onrender.com/login"
+        : "https://fma-backend-a7xw.onrender.com/signup";
   
     try {
       const response = await fetch(url, {
@@ -55,7 +55,7 @@ const handleSubmit = async (e) => {
           }));
         } else {
           // If signing in, fetch the user data from the server
-          const userResponse = await fetch(`http://localhost:3000/user/${formData.email}`, {
+          const userResponse = await fetch(`https://fma-backend-a7xw.onrender.com/user/${formData.email}`, {
             method: "GET",
             headers: {
               "Authorization": `Bearer ${data.token}`,
